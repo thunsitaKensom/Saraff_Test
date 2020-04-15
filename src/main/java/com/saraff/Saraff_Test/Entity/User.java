@@ -1,27 +1,18 @@
-package com.example.Saraff_test.entity;
+package com.saraff.Saraff_Test.Entity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.validation.constraints.NotNull;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer uid;
-
-    @NotNull
     private String Username;
-
     @NotNull
     private String Password;
-
     @NotNull
     private String Nickname;
-
     @NotNull
     private String Email;
 
@@ -34,14 +25,6 @@ public class User {
         this.Password = Password;
         this.Nickname = Nickname;
         this.Email = Email;
-    }
-
-    public void setId(Integer uid) {
-        this.uid = uid;
-    }
-
-    public Integer getId() {
-        return this.uid;
     }
 
     public void setUsername(String Username) {

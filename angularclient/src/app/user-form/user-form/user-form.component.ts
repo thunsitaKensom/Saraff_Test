@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../user.service';
-import { User } from '../user';
+import { UserService } from 'src/app/service/user.service';
+import { User } from 'src/app/model/user';
+
 
 @Component({
   selector: 'app-user-form',
@@ -20,10 +21,8 @@ export class UserFormComponent {
   }
 
   onSubmit() {
-    this.userService.save(this.user).subscribe(result => this.gotoUserList());
+    this.userService.save(this.user).subscribe(result => location.reload());
   }
 
-  gotoUserList() {
-    this.router.navigate(['/users']);
-  }
+
 }

@@ -1,4 +1,4 @@
-package com.example.Saraff_test;
+package com.saraff.Saraff_Test;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
