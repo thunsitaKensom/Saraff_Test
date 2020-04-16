@@ -7,11 +7,15 @@ import { AppComponent } from './app.component';
 
 import { UserService } from './service/user.service';
 import { UserFormComponent } from './user-form/user-form/user-form.component';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserFormComponent
+    UserFormComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

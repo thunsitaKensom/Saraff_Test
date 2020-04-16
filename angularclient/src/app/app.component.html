@@ -9,7 +9,10 @@
               <a routerLink="/adduser" class="btn btn-info">Registration</a>
             </li>
             <li class="list-inline-item">
-              <a routerLink="/check" class="btn btn-info">Login</a>
+              <a routerLink="/login" class="btn btn-info">Login</a>
+            </li>
+            <li>
+              <a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">LogOut</a>
             </li>
           </ul>
         </div>

@@ -18,19 +18,20 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping("/users")
+    @PostMapping("/home")
     void addUser(@RequestBody User user) {
         userRepository.save(user);
     }
 
-    @RequestMapping("/home")
+    @RequestMapping("/")
     public String hello() {
         return "Hello, world";
     }
 
-    @RequestMapping("/check")
-    public String user(String user) {
-        return user;
+    @PostMapping("/login")
+    public String login(@RequestBody User user) {
+        userRepository.checkLogin(user.getUsername(), user.getPassword());
+        return "true";
     }
 
 }

@@ -2,24 +2,30 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../model/user';
+import { Observable } from 'rxjs';
 
 
 @Injectable()
 export class UserService {
 
-  private usersUrl: string;
-  private checkUrl: string;
+  private homeUrl: string;
+  private loginUrl: string;
 
   constructor(private http: HttpClient) {
-    this.usersUrl = 'http://localhost:8080/users';
-    this.checkUrl = 'http://localhost:8080/check';
+    this.homeUrl = 'http://localhost:8080/home';
+    this.loginUrl = 'http://localhost:8080/login';
   }
 
   public save(user: User) {
-    return this.http.post<User>(this.usersUrl, user);
+    console.log(this.http.post<User>(this.homeUrl, user))
+    return this.http.post<User>(this.homeUrl, user);
   }
 
-  public check(user: User) {
-    return this.http.post<User>(this.checkUrl, user);
+  public authenticate(username: User["Username"], password: User["Password"]) {
+    var data = { username: username, password: password, nickname: "ad", email: "2" }
+    return this.http.post<User>(this.loginUrl, data);
+
   }
+
+
 }
