@@ -24,7 +24,17 @@ export class LoginComponent implements OnInit {
   }
 
   checkLogin() {
-    this.userService.authenticate(this.username, this.password).subscribe(result => this.router.navigate(['']));
+    this.userService.authenticate(this.username, this.password).subscribe(
+      result => {
+        if (result) {
+          sessionStorage.setItem('username', this.username)
+          this.router.navigate([''])
+        }
+        else {
+          alert("Incorrect username or password")
+          location.reload()
+        }
+      }
+    );
   }
-
 }

@@ -21,7 +21,10 @@ export class UserFormComponent {
   }
 
   onSubmit() {
-    this.userService.save(this.user).subscribe(result => location.reload());
+    this.userService.save(this.user).subscribe(result => {
+      sessionStorage.setItem('username', this.user["Username"]);
+      this.router.navigate(['/'])
+    });
   }
 
 
