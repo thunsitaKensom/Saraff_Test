@@ -11,11 +11,12 @@ import { User } from 'src/app/model/user';
 export class ProfileComponent implements OnInit {
 
   user: User;
+  userModal: User;
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private userService: UserService) {
     this.user = new User();
+    this.userModal = new User();
   }
 
   ngOnInit() {
@@ -25,6 +26,7 @@ export class ProfileComponent implements OnInit {
   profile() {
     this.userService.profile(sessionStorage.getItem('username')).subscribe(result => {
       this.user = result;
+      this.userModal = result;
       (['/profile'])
     });
 

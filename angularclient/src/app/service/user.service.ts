@@ -2,7 +2,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../model/user';
-import { Observable } from 'rxjs';
 
 
 @Injectable()
@@ -35,6 +34,7 @@ export class UserService {
     return this.http.post<User>(this.loginUrl, data);
 
   }
+
   isUserLoggedIn() {
     let user = sessionStorage.getItem('username')
     return !(user === null)

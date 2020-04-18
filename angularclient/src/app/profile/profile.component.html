@@ -4,27 +4,27 @@
       <div class="form-group">
         <label for="username">Username</label>
         <input type="text" [(ngModel)]="user.username" class="form-control" id="username" name="username"
-          placeholder="Enter your username" required #username="ngModel" readonly>
+          #username="ngModel" readonly>
       </div>
 
       <div class="form-group">
         <label for="password">Password</label>
         <input type="text" [(ngModel)]="user.password" class="form-control" id="password" name="password"
-          placeholder="Enter your password" required #password="ngModel" readonly>
+          #password="ngModel" readonly>
       </div>
 
       <div class="form-group">
         <label for="nickname">Nickname</label>
         <input type="text" [(ngModel)]="user.nickname" class="form-control" id="nickname" name="nickname"
-          placeholder="Enter your nickname" required #nickname="ngModel" readonly>
+          #nickname="ngModel" readonly>
       </div>
 
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" [(ngModel)]="user.email" class="form-control" id="email" name="email"
-          placeholder="Enter your email address" required #email="ngModel" readonly>
+        <input type="email" [(ngModel)]="user.email" class="form-control" id="email" name="email" #email="ngModel"
+          readonly>
       </div>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editProfile">
         Update
       </button>
     </form>
@@ -33,7 +33,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="editProfile" tabindex="-1" role="dialog" aria-labelledby="editProfileTitle"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -47,24 +47,24 @@
         <div class="modal-body">
           <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" [(ngModel)]="user.username" class="form-control" id="username" name="username"
+            <input type="text" [(ngModel)]="userModal.username" class="form-control" id="username" name="username"
               placeholder="Enter your username" required #username="ngModel">
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="text" [(ngModel)]="user.password" class="form-control" id="password" name="password"
+            <input type="text" [(ngModel)]="userModal.password" class="form-control" id="password" name="password"
               placeholder="Enter your password" required #password="ngModel">
           </div>
 
           <div class="form-group">
             <label for="nickname">Nickname</label>
-            <input type="text" [(ngModel)]="user.nickname" class="form-control" id="nickname" name="nickname"
+            <input type="text" [(ngModel)]="userModal.nickname" class="form-control" id="nickname" name="nickname"
               placeholder="Enter your nickname" required #nickname="ngModel">
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" [(ngModel)]="user.email" class="form-control" id="email" name="email"
+            <input type="email" [(ngModel)]="userModal.email" class="form-control" id="email" name="email"
               placeholder="Enter your email address" required #email="ngModel">
           </div>
         </div>

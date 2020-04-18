@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthenticationService } from './service/authentication.service';
+import { UserService } from './service/user.service';
+
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent {
 
   title: string;
 
-  constructor(private loginService: AuthenticationService) {
+  constructor(private loginService: UserService) {
     this.title = 'Spring Boot - Angular Application';
   }
 }
