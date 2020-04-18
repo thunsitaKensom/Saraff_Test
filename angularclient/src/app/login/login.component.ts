@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       result => {
         if (result) {
           sessionStorage.setItem('username', this.username)
-          this.router.navigate([''])
+          this.router.navigate(['/index'])
         }
         else {
           alert("Incorrect username or password")

@@ -23,9 +23,13 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public int update(Integer id) {
-        // TODO Auto-generated method stub
-        return 0;
+    public Book addBook(Book book) {
+        return bookRepository.save(book);
+    }
+
+    @Override
+    public Book update(Book book) {
+        return bookRepository.save(book);
     }
 
     /*

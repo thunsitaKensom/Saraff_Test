@@ -3,6 +3,7 @@
     <tr class="font-weight-bold text-center mx-0">
       <th>
         <h2>Your Book List</h2>
+        <a href="#" data-toggle="modal" data-target="#addBook">ADD BOOK</a>
       </th>
     </tr>
     <tr class="text-center row mx-0">
@@ -24,7 +25,7 @@
       </td>
       <td class="col-2">
         <div>
-          <a href="#" data-toggle="modal" data-target="#editBook">
+          <a href="#" (click)="getBook(book)" data-toggle="modal" data-target="#editBook">
             <mat-icon class="align-middle">edit</mat-icon>
           </a>
         </div>
@@ -37,7 +38,8 @@
 </table>
 
 <!-- Modal Edit -->
-<div class="modal fade" id="editBook" tabindex="-1" role="dialog" aria-labelledby="editBookTitle" aria-hidden="true">
+<div *ngIf="(book_edit | json) != '{}'" class="modal fade" id="editBook" tabindex="-1" role="dialog"
+  aria-labelledby="editBookTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -46,26 +48,29 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form (ngSubmit)="editBook()" #userForm="ngForm">
+      <form (ngSubmit)="editBook()" #bookForm="ngForm">
         <div class="modal-body">
           <div class="form-group">
             <label for="bookName">Book Name:</label>
-            <input type="bookName" class="form-control" id="bookName" name="bookName">
+            <input type="text" [(ngModel)]="book_edit.bookName" #bookName="ngModel" class="form-control" id="bookName"
+              name="bookName">
           </div>
 
           <div class="form-group">
-            <label for="bookName">Author:</label>
-            <input type="bookName" class="form-control" id="bookName" name="bookName">
+            <label for="author">Author:</label>
+            <input type="text" [(ngModel)]="book_edit.author" #author="ngModel" class="form-control" id="author"
+              name="author">
           </div>
 
           <div class="form-group">
-            <label for="bookName">Book Datail:</label>
-            <input type="bookName" class="form-control" id="bookName" name="bookName">
+            <label for="bookDetail">Book Detail:</label>
+            <input type="text" [(ngModel)]="book_edit.bookDetail" #bookDetail="ngModel" class="form-control" id="detail"
+              name="detail">
           </div>
 
           <div class="form-group">
-            <label for="bookName">Year:</label>
-            <input type="bookName" class="form-control" id="bookName" name="bookName">
+            <label for="year">Year:</label>
+            <input type="text" [(ngModel)]="book_edit.year" #year="ngModel" class="form-control" id="year" name="year">
           </div>
         </div>
         <div class="modal-footer">
@@ -113,6 +118,47 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Create Book -->
+<div class="modal fade" id="addBook" tabindex="-1" role="dialog" aria-labelledby="editBookTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Update Book</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form (ngSubmit)="editBook()" #bookForm="ngForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="bookName">Book Name:</label>
+            <input type="bookName" class="form-control" id="bookName" name="bookName">
+          </div>
+
+          <div class="form-group">
+            <label for="bookName">Author:</label>
+            <input type="bookName" class="form-control" id="bookName" name="bookName">
+          </div>
+
+          <div class="form-group">
+            <label for="bookName">Book Datail:</label>
+            <input type="bookName" class="form-control" id="bookName" name="bookName">
+          </div>
+
+          <div class="form-group">
+            <label for="bookName">Year:</label>
+            <input type="bookName" class="form-control" id="bookName" name="bookName">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn btn-success" data-dismiss="modal">Update</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

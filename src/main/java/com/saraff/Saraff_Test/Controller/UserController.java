@@ -43,7 +43,7 @@ public class UserController {
         return "false";
     }
 
-    @PostMapping("profile/{username}")
+    @PostMapping("/profile/{username}")
     public User profile(@PathVariable String username) {
         return userService.getUserByUsername(username);
     }

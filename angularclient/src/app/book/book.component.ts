@@ -10,6 +10,7 @@ import { Book } from '../model/book';
 export class BookComponent implements OnInit {
 
   books: Book[];
+  book_edit: Book;
   constructor(
     private bookService: BookService
   ) { }
@@ -17,6 +18,17 @@ export class BookComponent implements OnInit {
   ngOnInit() {
     this.list()
   }
+
+  getBook(book: Book) {
+    console.log(book)
+    this.book_edit = book;
+    // this.bookService.view(book).subscribe(result => {
+    //   this.user = result;
+    //   this.userModal = result;
+    //   (['/profile'])
+    // });
+  }
+
 
   list() {
     this.bookService.list(sessionStorage.getItem('username')).subscribe(result => {

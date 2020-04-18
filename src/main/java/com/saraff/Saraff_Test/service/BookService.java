@@ -8,6 +8,8 @@ public interface BookService {
 
     Iterable<Book> listAllBooks(String username);
 
-    int update(Integer id);
+    Book addBook(Book book);
+
+    Book update(Book book);
 
 }
