@@ -1,0 +1,13 @@
+.hideword {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cutline {
+  word-wrap: break-word
+}
+
+table {
+  text-overflow: ellipsis;
+}

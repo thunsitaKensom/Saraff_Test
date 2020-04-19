@@ -4,12 +4,14 @@ import com.saraff.Saraff_Test.Entity.Book;
 
 public interface BookService {
 
-    Book getBookById(Integer id);
+    // Book getBookById(Integer id);
 
-    Iterable<Book> listAllBooks(String username);
+    Iterable<Book> listOwnerBooks(String username);
 
-    Book addBook(Book book);
+    Book save(Book book);
 
     Book update(Book book);
+
+    void deleteBook(Book book);
 
 }

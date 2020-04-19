@@ -1,7 +1,7 @@
 package com.saraff.Saraff_Test.Controller;
 
-import com.saraff.Saraff_Test.Entity.Book;
 import com.saraff.Saraff_Test.service.BookService;
+import com.saraff.Saraff_Test.Entity.Book;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,7 +20,7 @@ public class BookController {
 
     @RequestMapping("/books/{username}")
     public Iterable<Book> list(@PathVariable String username) {
-        return bookService.listAllBooks(username);
+        return bookService.listOwnerBooks(username);
     }
 
     /*
@@ -33,14 +33,19 @@ public class BookController {
      * bookService.update(id); }
      */
 
-    @PostMapping("/book")
-    void addUser(@RequestBody Book book) {
-        bookService.update(book);
-    }
-
     @PostMapping("/book/update")
     void update(@RequestBody Book book) {
         bookService.update(book);
+    }
+
+    @PostMapping("/book/save")
+    void save(@RequestBody Book book) {
+        bookService.save(book);
+    }
+
+    @RequestMapping("book/delete")
+    void delete(@RequestBody Book book) {
+        bookService.deleteBook(book);
     }
 
 }

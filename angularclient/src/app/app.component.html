@@ -4,23 +4,32 @@
       <div class="card bg-dark my-5">
         <div class="card-body">
           <h2 class="card-title text-center text-white py-3">{{ title }}</h2>
-          <ul class="text-center list-inline py-3">
-            <li class="list-inline-item">
-              <a routerLink="/index" class="btn btn-info">Homepage</a>
-            </li>
-            <li class="list-inline-item">
-              <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/adduser" class="btn btn-info">Registration</a>
-            </li>
-            <li class="list-inline-item">
-              <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="btn btn-info">Login</a>
-            </li>
-            <li class="list-inline-item">
-              <a *ngIf="loginService.isUserLoggedIn()" routerLink="/profile" class="btn btn-info">Profile</a>
-            </li>
-            <li class="list-inline-item">
-              <a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="btn btn-danger">Logout</a>
-            </li>
-
+          <ul class=" list-inline py-3">
+            <div class="row">
+              <div class="col pl-4">
+                <li class="list-inline-item">
+                  <a routerLink="/index" class="btn btn-info">
+                    <mat-icon class="align-middle">home</mat-icon>
+                  </a>
+                </li>
+              </div>
+              <div class="col text-right pr-4">
+                <li class="list-inline-item ">
+                  <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/adduser" class="btn btn-info">Registration</a>
+                </li>
+                <li class="list-inline-item">
+                  <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="btn btn-info">Login</a>
+                </li>
+                <li class="list-inline-item">
+                  <a *ngIf="loginService.isUserLoggedIn()" routerLink="/profile" class="btn btn-info">
+                    <mat-icon class="align-middle">account_circle</mat-icon>
+                  </a>
+                </li>
+                <li class="list-inline-item align-middle">
+                  <a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="btn btn-danger">Logout</a>
+                </li>
+              </div>
+            </div>
           </ul>
         </div>
       </div>

@@ -12,24 +12,29 @@ public class BookServiceImpl implements BookService {
     @Autowired
     private BookRepository bookRepository;
 
+    /*
+     * @Override public Book getBookById(Integer id) { return
+     * bookRepository.findById(id).get(); }
+     */
+
     @Override
-    public Book getBookById(Integer id) {
-        return bookRepository.findById(id).get();
+    public Iterable<Book> listOwnerBooks(String username) {
+        return bookRepository.listOwnerBooks(username);
     }
 
     @Override
-    public Iterable<Book> listAllBooks(String username) {
-        return bookRepository.listAllBook(username);
-    }
-
-    @Override
-    public Book addBook(Book book) {
+    public Book save(Book book) {
         return bookRepository.save(book);
     }
 
     @Override
     public Book update(Book book) {
         return bookRepository.save(book);
+    }
+
+    @Override
+    public void deleteBook(Book book) {
+        bookRepository.deleteBook(book);
     }
 
     /*
