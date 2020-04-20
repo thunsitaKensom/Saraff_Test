@@ -35,8 +35,12 @@ export class BookComponent implements OnInit {
   }
 
   getBook(book: Book) {
-    console.log(book)
-    this.get_book = book;
+    this.get_book["id"] = book["id"];
+    this.get_book["bookName"] = book["bookName"];
+    this.get_book["bookDetail"] = book["bookDetail"];
+    this.get_book["author"] = book["author"];
+    this.get_book["year"] = book["year"];
+    this.get_book["username"] = book["username"];
   }
 
   list() {

@@ -137,7 +137,8 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form (ngSubmit)="updateBook()" #bookForm="ngForm">
+
+      <form (ngSubmit)="updateBook(bookForm)" #bookForm="ngForm">
         <div class="modal-body">
           <div class="form-group">
             <label for="bookName">Book Name:</label>

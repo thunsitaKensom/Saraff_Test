@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
 import { User } from 'src/app/model/user';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -28,16 +29,25 @@ export class ProfileComponent implements OnInit {
   profile() {
     this.userService.profile(sessionStorage.getItem('username')).subscribe(result => {
       this.user = result;
-      this.userModal = result;
       (['/profile'])
     });
 
   }
 
-  editProfile() {
-    this.userService.update(this.user).subscribe(result => {
-      console.log(this.user)
-      sessionStorage.setItem('username', this.user["username"]);
+  getBook() {
+    this.userModal["username"] = this.user["username"];
+    this.userModal["nickname"] = this.user["nickname"];
+    this.userModal["password"] = this.user["password"];
+    this.userModal["email"] = this.user["email"];
+  }
+
+
+  editProfile(f: NgForm) {
+    console.log(f.value)
+    this.userModal = f.value;
+    this.userService.update(this.userModal).subscribe(result => {
+      console.log(this.userModal)
+      sessionStorage.setItem('username', this.userModal["username"]);
       this.router.navigate([location.reload()])
     });
   }
@@ -47,7 +57,6 @@ export class ProfileComponent implements OnInit {
     this.userService.checkUsernameDuplicate(event.target.value).subscribe(result => {
       //console.log(result)
       if ((result) == null) {
-        console.log(result + "6665")
         this.usernameDuplicate = true;
       }
       else {

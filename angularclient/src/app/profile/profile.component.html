@@ -1,32 +1,24 @@
 <div class="card my-5">
   <div class="card-body">
-    <form #userForm="ngForm">
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" [(ngModel)]="user.username" class="form-control" name="username" #username="ngModel"
-          readonly>
-      </div>
-
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" [(ngModel)]="user.password" class="form-control" name="password" #password="ngModel"
-          readonly>
-      </div>
-
-      <div class="form-group">
-        <label for="nickname">Nickname</label>
-        <input type="text" [(ngModel)]="user.nickname" class="form-control" name="nickname" #nickname="ngModel"
-          readonly>
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" [(ngModel)]="user.email" class="form-control" name="email" #email="ngModel" readonly>
-      </div>
-      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editProfile">
-        Update
-      </button>
-    </form>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" value="{{user.username}}" readonly>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" value="{{user.password}}" class="form-control" readonly>
+    </div>
+    <div class="form-group">
+      <label for="nickname">Nickname</label>
+      <input type="text" class="form-control" value="{{user.nickname}}" readonly>
+    </div>
+    <div class=" form-group">
+      <label for="email">Email</label>
+      <input type="email" value="{{user.email}}" class="form-control" readonly>
+    </div>
+    <button type="button" (click)="getBook()" class="btn btn-warning" data-toggle="modal" data-target="#editProfile">
+      Update
+    </button>
   </div>
 </div>
 
@@ -42,31 +34,31 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form (ngSubmit)="editProfile()" #userForm="ngForm" name="userForm">
+      <form (ngSubmit)="editProfile(userForm)" #userForm="ngForm" name="userForm">
         <div class="modal-body">
           <div class="form-group">
             <label for="username">Username</label>
             <input type="text" [ngClass]="{'border-danger': !usernameDuplicate}"
-              (keyup)="checkUsernameDuplicate($event)" [(ngModel)]="userModal.username" class="form-control"
-              id="username" name="username" placeholder="Enter your username" required #username="ngModel">
+              (keyup)="checkUsernameDuplicate($event)" [(ngModel)]="userModal.username" #userModal.username="ngModel"
+              class="form-control" id="username" name="username" placeholder="Enter your username" required>
             <span *ngIf="!usernameDuplicate" style="color: red;" class="small">This username is alredy exists</span>
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" [(ngModel)]="userModal.password" class="form-control" id="password" name="password"
-              placeholder="Enter your password" #password="ngModel">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password"
+              [(ngModel)]="userModal.password" #userModal.password="ngModel" value="{{userModal.password}}">
           </div>
 
           <div class="form-group">
             <label for="nickname">Nickname</label>
             <input type="text" [(ngModel)]="userModal.nickname" class="form-control" id="nickname" name="nickname"
-              placeholder="Enter your nickname" required #nickname="ngModel">
+              placeholder="Enter your nickname" required #userModal.nickname="ngModel" value="{{userModal.nickname}}">
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
             <input type="email" [(ngModel)]="userModal.email" class="form-control" id="email" name="email"
-              placeholder="Enter your email address" required #email="ngModel">
+              placeholder="Enter your email address" required #userModal.email="ngModel" value="{{userModal.email}}">
           </div>
         </div>
         <div class="modal-footer">
