@@ -5,6 +5,7 @@ import com.saraff.Saraff_Test.Entity.Book;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,15 +24,10 @@ public class BookController {
         return bookService.listOwnerBooks(username);
     }
 
-    /*
-     * @RequestMapping("book/{id}") public Book viewBook(@PathVariable Integer id) {
-     * return bookService.getBookById(id); }
-     */
-
-    /*
-     * @PostMapping("/book/update/{id}") void update(@PathVariable Integer id) {
-     * bookService.update(id); }
-     */
+    @GetMapping("/books")
+    public Iterable<Book> listAllBooks() {
+        return bookService.listAllBooks();
+    }
 
     @PostMapping("/book/update")
     void update(@RequestBody Book book) {

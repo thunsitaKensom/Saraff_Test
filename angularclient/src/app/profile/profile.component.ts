@@ -12,11 +12,13 @@ export class ProfileComponent implements OnInit {
 
   user: User;
   userModal: User;
+  usernameDuplicate: Boolean;
   constructor(
     private router: Router,
     private userService: UserService) {
     this.user = new User();
     this.userModal = new User();
+    this.usernameDuplicate = true;
   }
 
   ngOnInit() {
@@ -37,9 +39,21 @@ export class ProfileComponent implements OnInit {
       console.log(this.user)
       sessionStorage.setItem('username', this.user["username"]);
       this.router.navigate([location.reload()])
-
     });
+  }
 
+  checkUsernameDuplicate(event: any) {
+    // console.log(event.target.value)
+    this.userService.checkUsernameDuplicate(event.target.value).subscribe(result => {
+      //console.log(result)
+      if ((result) == null) {
+        console.log(result + "6665")
+        this.usernameDuplicate = true;
+      }
+      else {
+        this.usernameDuplicate = false;
+      }
+    });
   }
 
 }

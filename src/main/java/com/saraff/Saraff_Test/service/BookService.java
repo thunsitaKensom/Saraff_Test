@@ -8,10 +8,14 @@ public interface BookService {
 
     Iterable<Book> listOwnerBooks(String username);
 
+    Iterable<Book> listAllBooks();
+
     Book save(Book book);
 
     Book update(Book book);
 
     void deleteBook(Book book);
+
+    int updateUsername(String username, String oldUsername);
 
 }

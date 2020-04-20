@@ -11,4 +11,7 @@ public interface UserService {
     User getUserByUsername(String username);
 
     int update(User user, String username);
+
+    User checkDuplicate(String username, String input);
+
 }

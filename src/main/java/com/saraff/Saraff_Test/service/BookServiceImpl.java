@@ -23,6 +23,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public Iterable<Book> listAllBooks() {
+        return bookRepository.findAll();
+    }
+
+    @Override
     public Book save(Book book) {
         return bookRepository.save(book);
     }
@@ -37,8 +42,9 @@ public class BookServiceImpl implements BookService {
         bookRepository.deleteBook(book);
     }
 
-    /*
-     * @Override public int update(Integer id) { }
-     */
+    @Override
+    public int updateUsername(String username, String oldUsername) {
+        return bookRepository.updateUsername(username, oldUsername);
+    }
 
 }

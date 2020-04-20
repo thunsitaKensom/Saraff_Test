@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class BookService {
 
   listBookUrl: string;
+  listAllBookUrl: string;
   viewBookUrl: string;
   saveBookUrl: string;
   updateBookUrl: string;
@@ -49,6 +50,10 @@ export class BookService {
     var book_id = { id: book['Id'] }
     //console.log(book.Id)
     return this.http.post<Book>(this.deleteBookUrl, book);
+  }
+
+  public listAllBooks(): Observable<Book[]> {
+    return this.http.get<Book[]>(this.listBookUrl);
   }
 }
 

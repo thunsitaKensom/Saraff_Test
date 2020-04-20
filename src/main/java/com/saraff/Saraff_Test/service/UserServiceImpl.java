@@ -37,4 +37,9 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(username).get();
     }
 
+    @Override
+    public User checkDuplicate(String username, String input) {
+        return userRepository.checkDuplicate(username, input);
+    }
+
 }

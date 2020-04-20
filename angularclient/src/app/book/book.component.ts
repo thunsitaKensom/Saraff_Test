@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookService } from '../service/book.service';
 import { Book } from '../model/book';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-book',
@@ -17,7 +18,8 @@ export class BookComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private bookService: BookService
+    private bookService: BookService,
+    private userService: UserService
   ) {
     this.book = new Book();
     this.get_book = new Book();
@@ -25,7 +27,11 @@ export class BookComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.list()
+    if (this.userService.isUserLoggedIn()) {
+      this.list()
+    } else {
+      this.listAllBooks()
+    }
   }
 
   getBook(book: Book) {
@@ -61,6 +67,13 @@ export class BookComponent implements OnInit {
     this.bookService.delete(this.get_book).subscribe(result => {
       this.get_book = result;
       ([(location.reload())])
+    });
+  }
+
+  listAllBooks() {
+    this.bookService.listAllBooks().subscribe(result => {
+      this.books = result;
+      (["/index"])
     });
   }
 

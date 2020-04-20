@@ -7,21 +7,23 @@ import { User } from '../model/user';
 @Injectable()
 export class UserService {
 
-  private homeUrl: string;
+  private addUserUrl: string;
   private loginUrl: string;
   private profileUrl: string;
   private userUpdateUrl: string;
+  private checkUsernameDuplicateUrl: string;
 
   constructor(private http: HttpClient) {
-    this.homeUrl = 'http://localhost:8080/home';
+    this.addUserUrl = 'http://localhost:8080/user/create';
     this.loginUrl = 'http://localhost:8080/login';
     this.profileUrl = 'http://localhost:8080/profile';
     this.userUpdateUrl = 'http://localhost:8080/user/update';
+    this.checkUsernameDuplicateUrl = 'http://localhost:8080/user/duplicate';
   }
 
   public save(user: User) {
-    console.log(this.http.post<User>(this.homeUrl, user))
-    return this.http.post<User>(this.homeUrl, user);
+    console.log(this.http.post<User>(this.addUserUrl, user))
+    return this.http.post<User>(this.addUserUrl, user);
   }
 
   public update(user: User) {
@@ -47,6 +49,12 @@ export class UserService {
   public profile(username: String) {
     console.log(this.http.post<User>(this.profileUrl + '/' + username, username))
     return this.http.post<User>(this.profileUrl + '/' + username, username);
+  }
+
+  public checkUsernameDuplicate(input: any) {
+    //console.log(input)
+    //console.log(this.http.post<User>(this.profileUrl + '/' + username, username))
+    return this.http.get<any>(this.checkUsernameDuplicateUrl + '/' + sessionStorage.getItem('username') + '?input=' + input);
   }
 
 

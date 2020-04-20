@@ -15,18 +15,18 @@
               </div>
               <div class="col text-right pr-4">
                 <li class="list-inline-item ">
-                  <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/adduser" class="btn btn-info">Registration</a>
+                  <a *ngIf="!userService.isUserLoggedIn()" routerLink="/adduser" class="btn btn-info">Registration</a>
                 </li>
                 <li class="list-inline-item">
-                  <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="btn btn-info">Login</a>
+                  <a *ngIf="!userService.isUserLoggedIn()" routerLink="/login" class="btn btn-info">Login</a>
                 </li>
                 <li class="list-inline-item">
-                  <a *ngIf="loginService.isUserLoggedIn()" routerLink="/profile" class="btn btn-info">
+                  <a *ngIf="userService.isUserLoggedIn()" routerLink="/profile" class="btn btn-info">
                     <mat-icon class="align-middle">account_circle</mat-icon>
                   </a>
                 </li>
                 <li class="list-inline-item align-middle">
-                  <a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="btn btn-danger">Logout</a>
+                  <a *ngIf="userService.isUserLoggedIn()" routerLink="/logout" class="btn btn-danger">Logout</a>
                 </li>
               </div>
             </div>
